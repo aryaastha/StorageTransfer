@@ -1,0 +1,65 @@
+{
+  "Mapping": {
+    "Key": {
+      "fields": [
+        "canonical_hash"
+      ],
+      "delimiter": ":"
+    },
+    "Qualifiers": [
+      {
+        "qualifierType": "SimpleColumn",
+        "properties": {
+          "fields": [
+            "rank"
+          ],
+          "columnName": "rank",
+          "operation": {
+            "type": "concat",
+            "delimiter": "$",
+            "headerFlag": 0
+          }
+        }
+      },
+      {
+        "qualifierType": "SimpleColumn",
+        "properties": {
+          "fields": [
+            "keyword_id",
+            "keyword_term",
+            "cpc",
+            "yahoo_ad_depth",
+            "impression",
+            "conversion",
+            "revenue"
+          ],
+          "columnName": "Qualifier5",
+          "operation": {
+            "type": "concat",
+            "delimiter": "$",
+            "headerFlag": 1,
+            "headers": [
+              "kid",
+              "kt",
+              "cpc",
+              "ad",
+              "i",
+              "c",
+              "r"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Pivot": {
+    "prefix": "K",
+    "pivotFields": [
+      "rank"
+    ],
+    "delimiter": [
+      "$"
+    ],
+    "columns": ""
+  }
+}

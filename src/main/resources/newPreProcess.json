@@ -1,0 +1,62 @@
+{
+  "Pivot": {
+  },
+  "Mapping": {
+    "Key": {
+      "fields": [
+        "hierarchy_hash",
+        "stats_date"
+      ],
+      "delimiter": ":"
+    },
+    "Qualifiers": [
+      {
+        "qualifierType": "CustomColumn",
+        "properties": {
+          "columnFields": [
+            "learner_id"
+          ],
+          "delimiter": "$",
+          "fields": [
+            "level_id",
+            "level_rpm",
+            "level_ctr"
+          ],
+          "customFieldName": "Qualifier3",
+          "operation": {
+            "type": "json"
+          }
+        }
+      },
+      {
+        "qualifierType": "SimpleColumn",
+        "properties": {
+          "fields": [
+            "level1",
+            "level2"
+          ],
+          "columnName": "Qualifier4",
+          "operation": {
+            "type": "concat",
+            "delimiter": "$"
+          }
+        }
+      },
+      {
+        "qualifierType": "SimpleColumn",
+        "properties": {
+          "fields": [
+            "level3",
+            "level4"
+          ],
+          "columnName": "Qualifier5",
+          "operation": {
+            "type": "concat",
+            "delimiter": "$"
+          }
+        }
+      }
+    ]
+  },
+  "Aggregation": {}
+}

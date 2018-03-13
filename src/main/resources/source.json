@@ -1,0 +1,21 @@
+{
+  "tableName": "misc.jeetu_url_master_test",
+  "filters": [],
+  "whiteList": [
+    "canonical_hash"
+  ],
+  "hbaseUtil": {
+    "tableName": "data:url_master",
+    "zookeeperQuorum": "c8-auto-hadoop-service-1.srv.media.net,c8-auto-hadoop-service-2.srv.media.net,c8-auto-hadoop-service-3.srv.media.net",
+    "zookeeperClientPort": "2181",
+    "listColumns": [
+      {
+        "columnFamily": "c1",
+        "customFieldsNames": [],
+        "columnNames": [
+          "p"
+        ]
+      }
+    ]
+  }
+}

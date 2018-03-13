@@ -1,0 +1,16 @@
+{
+  "hbaseUtil": {
+    "tableName": "data:ad_dump_detail",
+    "zookeeperQuorum": "c8-auto-hadoop-service-1.srv.media.net,c8-auto-hadoop-service-2.srv.media.net,c8-auto-hadoop-service-3.srv.media.net",
+    "zookeeperClientPort": "2181",
+    "listColumns": [
+      {
+        "columnFamily": "cf1",
+        "customFieldsNames": [],
+        "columnNames": [
+          "Qualifier1"
+        ]
+      }
+    ]
+  }
+}

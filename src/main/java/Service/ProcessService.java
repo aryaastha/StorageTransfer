@@ -19,10 +19,10 @@ import java.util.Set;
 /**
  * Created by astha.a on 17/05/17.
  */
-public class NewPreProcessService implements Serializable {
+public class ProcessService implements Serializable {
     Broadcast<List<Processes>> processes;
 
-    public NewPreProcessService(JavaSparkContext jsc, JsonObject jsonObject) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public ProcessService(JavaSparkContext jsc, JsonObject jsonObject) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         List<Processes> tempProcesses = new ArrayList<Processes>();
         Set<Map.Entry<String, JsonElement>> entries = jsonObject.entrySet();
         for (Map.Entry<String, JsonElement> e : entries) {

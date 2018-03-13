@@ -13,7 +13,7 @@ public class Constants {
     public static final String SINK_TYPE = "sink.type";
     public static final String APP_NAME = "app.name";
     public static final String SOURCE_PROPERTIES = "source.properties";
-    public static final String PREPROCESS_PROPERTIES = "preprocess.properties";
+    public static final String PREPROCESS_PROPERTIES = "process.properties";
     public static final String SINK_PROPERTIES = "sink.properties";
 
     public static final String DATA_PARTITION = "data.partition";

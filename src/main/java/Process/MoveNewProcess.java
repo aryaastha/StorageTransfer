@@ -3,7 +3,7 @@ package Process;
 import DataSource.Datasources;
 import Factory.SinkFactory;
 import Factory.SourceFactory;
-import Service.NewPreProcessService;
+import Service.ProcessService;
 import Utils.Constants;
 import Utils.FileUtils;
 import Utils.GsonService;
@@ -20,19 +20,19 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class MoveNewProcess {
     private Datasources sourceObject;
-    NewPreProcessService preprocessService;
+    ProcessService processService;
     Datasources sinkObject;
 
     public MoveNewProcess(JavaSparkContext jsc) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         sourceObject = SourceFactory.getSourceObject();
         JsonObject preProcessJson = GsonService.getInstance().getGson().fromJson(FileUtils.readFileToString(JobProperties.getInstance().getProperty(Constants.PREPROCESS_PROPERTIES)), JsonObject.class);
-        preprocessService = new NewPreProcessService(jsc, preProcessJson);
+        processService = new ProcessService(jsc, preProcessJson);
         sinkObject = SinkFactory.getSinkObject();
     }
 
     public void process(JavaSparkContext jsc) throws IOException {
         JavaRDD<JsonObject> jsonJavaRDD = sourceObject.get(jsc);
-        JavaRDD<JsonObject> afterPreprocessing = preprocessService.process(jsonJavaRDD);
+        JavaRDD<JsonObject> afterPreprocessing = processService.process(jsonJavaRDD);
         sinkObject.put(afterPreprocessing, jsc);
     }
 }

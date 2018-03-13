@@ -31,7 +31,6 @@ public class FileUtils {
 
     public static void updatePropertiesFromHdfsFile(JobProperties jobProperties, String path) {
         String getPropertyString = readFileToString(path);
-        System.out.println(getPropertyString + " ");
         for (String line : getPropertyString.split("\n")) {
             String key = line.split("=")[0].trim();
             String value = line.split("=")[1].trim();
@@ -46,14 +45,12 @@ public class FileUtils {
             String key = line.split("=")[0].trim();
             String value = line.split("=")[1].trim();
             jobProperties.setProperty(key, value);
-            System.out.println(key + " " + value);
         }
     }
 
     public static String readFileToString(String filePath) {
         String result = "";
         try {
-            System.out.println(filePath);
             Path pt = new Path(filePath);
             FileSystem fs = FileSystem.get(new Configuration());
             BufferedReader br = new BufferedReader(new InputStreamReader(fs.open(pt)));
@@ -108,7 +105,6 @@ public class FileUtils {
                 FileStatus[] fileStatuses = fs.listStatus(dirPath, new PathFilter() {
                     public boolean accept(Path path) {
                         try {
-                            System.out.println(path.getName());
                             return (!path.getName().startsWith("_")) && fs.isDirectory(path);
                         } catch (IOException e) {
                             e.printStackTrace();

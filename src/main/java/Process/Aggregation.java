@@ -25,10 +25,8 @@ public class Aggregation implements Processes, Serializable {
     private Columns[] columns;
 
     public Aggregation(JsonObject preProcessJson) {
-//        System.out.println("Preprocessjson : " + preProcessJson);
         this.field = GsonService.getInstance().getGson().fromJson(preProcessJson.getAsJsonArray("field"), ArrayList.class);
         this.keyElements = GsonService.getInstance().getGson().fromJson(preProcessJson.getAsJsonArray("keyElements"), ArrayList.class);
-//        System.out.println("Length of keyElements : " + keyElements.size());
         this.columns = GsonService.getInstance().getGson().fromJson(preProcessJson.get("columns").getAsJsonArray(), Columns[].class);
     }
 
@@ -87,13 +85,8 @@ public class Aggregation implements Processes, Serializable {
                     for (JsonElement element : v1._2) {
                         jsonElements.add(element.getAsJsonObject().get(col.getColumnName()));
                     }
-//                    System.out.println("JsonElements : " + jsonElements.toString());
                     newObject.add(col.getColumnName(), new JsonPrimitive(jsonElements.toString()));
-//                    System.out.println("Intermediate value of col :" + col.getColumnName() + " is : " + jsonElements.toString());
                 }
-
-//                System.out.println("V1 : " + v1);
-//                System.out.println("New Object : " + newObject.toString());
 
                 return newObject;
             }

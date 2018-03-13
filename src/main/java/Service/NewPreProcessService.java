@@ -48,8 +48,6 @@ public class NewPreProcessService implements Serializable {
             JavaRDD<JsonObject> jsonObjectJavaRDD = arrayList.get(0);
             arrayList.remove(0);
             JavaRDD<JsonObject> apply = process.apply(jsonObjectJavaRDD);
-//            System.out.println(process.getClass().getName() + " : " + apply.count());
-
             arrayList.add(apply);
         }
         return arrayList.get(0);

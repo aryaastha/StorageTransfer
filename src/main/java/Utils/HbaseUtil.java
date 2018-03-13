@@ -71,9 +71,6 @@ public class HbaseUtil implements Serializable {
             try {
                 List<Cell> cells = res.listCells();
                 for (Cell c : cells) {
-//                    family = Bytes.toString(CellUtil.cloneFamily(c));
-//                    qualifier = Bytes.toString(CellUtil.cloneQualifier(c));
-//                    value = Bytes.toString(CellUtil.cloneValue(c));
                     try {
                         family = Bytes.toString(CellUtil.cloneFamily(c));
                         qualifier = Bytes.toString(CellUtil.cloneQualifier(c));
@@ -90,11 +87,9 @@ public class HbaseUtil implements Serializable {
             } catch (Exception e) {
                 e.printStackTrace();
                 number_of_nulls++;
-                System.out.println("Exception for the key : " + Bytes.toString(getList.get(i).getRow()));
             }
             i++;
         }
-        System.out.println("Number of nulls : " + number_of_nulls);
         return dataFromHive;
     }
 
@@ -134,7 +129,6 @@ public class HbaseUtil implements Serializable {
             }
             putList.add(put);
         }
-        System.out.println("Total PUT keys : " + putList.size());
         table.put(putList);
         table.close();
 

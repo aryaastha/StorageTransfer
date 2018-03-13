@@ -20,14 +20,11 @@ public class PreprocessService implements Serializable {
 
 
     public PreprocessService(JsonObject preProcessJson) throws ClassNotFoundException {
-//        System.out.println(preProcessJson.get("Key").getAsJsonObject());
         Key = GsonService.getInstance().getGson().fromJson(preProcessJson.get("Key").getAsJsonObject(), GenerateKey.class);
         JsonArray qualifiers = preProcessJson.get("Qualifiers").getAsJsonArray();
         Qualifiers = new ArrayList<GenerateColumns>();
         for (JsonElement jsonElement : qualifiers) {
             JsonObject asJsonObject = jsonElement.getAsJsonObject();
-//            System.out.println("JsonObject : " + asJsonObject);
-//            System.out.println("String : "+ jsonElement.getAsJsonObject().get("qualifierType").getAsString());
             Class QualifierType = Class.forName("Service." + jsonElement.getAsJsonObject().get("qualifierType").getAsString());
             Qualifiers.add((GenerateColumns) GsonService.getInstance().getGson().fromJson(asJsonObject.get("properties").getAsJsonObject(), QualifierType));
         }
@@ -42,7 +39,6 @@ public class PreprocessService implements Serializable {
                 for (GenerateColumns columns : Qualifiers) {
                     columns.generateKey(row, json);
                 }
-//                System.out.println("JsonObject : "+ json);
                 return json;
             }
         });

@@ -18,11 +18,5 @@ public class Constants {
 
     public static final String DATA_PARTITION = "data.partition";
     public static final String TIMESTAMP = "timestamp";
-    public static final String STREAM_DURATION = "stream.batch.duration";
-    public static final String SOURCE_KAFKA_BROKERS = "source.kafka.brokers";
-    public static final String SINK_KAFKA_BROKERS = "sink.kafka.brokers";
-    public static final String CONSUMER_GROUP_ID = "consumer.group.id";
-    public static final String CHECKPOINT_DIR = "checkpoint.dir";
-
 
 }

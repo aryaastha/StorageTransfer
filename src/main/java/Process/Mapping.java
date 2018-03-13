@@ -35,7 +35,6 @@ public class Mapping implements Processes, Serializable {
     public JavaRDD<JsonObject> apply(JavaRDD<JsonObject> input) {
         return input.map(new Function<JsonObject, JsonObject>() {
             public JsonObject call(JsonObject v1) throws Exception {
-//                System.out.println("V1 : " + v1);
                 JsonObject json = new JsonObject();
                 Key.generateKey(v1, json);
 

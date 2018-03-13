@@ -7,7 +7,6 @@ import java.util.List;
 
 public class DataManipulation {
     public static String generateNewValue(JsonObject json, List<String> fields) {
-//        System.out.println("I came here!");
         StringBuilder builder = new StringBuilder();
         for (String field : fields) {
             builder.append(json.get(field).getAsString()).append(";");
